@@ -22,22 +22,27 @@
 				text-align: center;
 				margin-right: 2px;
 			}
+			textarea{
+				width:500px;
+				height:300px;
+			}
 		</style>
 	</head>
 	<body>
-		<!--<div id="container">
-			<div id="back">
-				some text here
+		<div id="main">
+			<canvas></canvas>
+			<div id="buttonContainer">
+				<div id="butUndo" class="button">Undo</div>
+				<div id="butRedo" class="button">Redo</div>
+				<div id="butShowJson" class="button">Show JSON</div>
 			</div>
-			<div id="fore">
-				<img src="transp.png"/>
+		</div>
+		<div id="copyJson" style="display:none">
+			<textarea></textarea>
+			<div>
+				<button id="butCloseJson">Close</button>
+				<!--<button id="butLoadJson">Load</button>-->
 			</div>
-		</div>-->
-		<canvas>
-		</canvas>
-		<div id="buttonContainer">
-			<div id="butUndo" class="button">Undo</div>
-			<div id="butRedo" class="button">Redo</div>
 		</div>
 		<script>
 			// modes:
@@ -263,6 +268,18 @@
 						}
 					});
 				}
+
+				$("#butCloseJson").click(function(){
+					$("#copyJson").hide();
+					$("#main").show();
+				});
+
+
+				$("#butShowJson").click(function(){
+					$("textarea").val(JSON.stringify(points));
+					$("#main").hide();
+					$("#copyJson").show();
+				});
 			});
 		</script>
 	</body>
